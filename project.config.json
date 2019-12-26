@@ -1,0 +1,17 @@
+{
+	"miniprogramRoot": "dist/",
+	"projectname": "%E6%AF%8F%E6%97%A5%E6%9C%89%E9%B2%9C",
+	"description": "仿每日优鲜",
+	"appid": "wx7fae36ba23c324e4",
+	"setting": {
+		"urlCheck": false,
+		"es6": false,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {}
+}

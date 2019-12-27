@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro';
-import { View, Text, OpenData } from '@tarojs/components';
+import { View, Text, OpenData, Image } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 import { getTest } from '../../actions/test';
 import './index.less';
@@ -21,8 +21,13 @@ const Index = (props: IProps) => {
     <View className='index'>
       <View><Text onClick={handleClick}>获取数据 </Text></View>
       {
-        tests.map(item => {
-          return <Text key={item.id}>{item.name}</Text>
+        tests.length > 0 && tests.map(item => {
+          return (
+            <View key={item.id}>
+              <Text>{item.name}</Text>
+              <Image src={`http://101.200.191.21:3000${item.file.publicUrl}`} ></Image>
+            </View>
+          )
         })
       }
       <OpenData className='avatar' type='userAvatarUrl'></OpenData>

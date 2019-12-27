@@ -6,19 +6,25 @@ import {
   logError
 } from './logError';
 
-const base = 'http://101.200.191.21:1337'
+const base = 'http://101.200.191.21:3000/admin/api'
 export default {
   baseOptions(params, method = 'GET') {
     let {
-      url,
-      data
+      query
     } = params;
     const option = {
-      url: base + url,
-      data: data,
+      url: base,
+      data: {
+        "operationName": null,
+        "variables": {},
+        "query": query
+      },
       method: method,
       header: {
         'content-type': 'application/json;charset=UTF-8'
+      },
+      body: {
+        query,
       },
       success(res) {
         if (res.statusCode === HTTP_STATUS.NOT_FOUND) {
@@ -32,7 +38,13 @@ export default {
         } else if (res.statusCode === HTTP_STATUS.SERVER_ERROR) {
           return logError('api', '500')
         } else if (res.statusCode === HTTP_STATUS.SUCCESS) {
-          return res.data
+          const {
+            data
+          } = res.data;
+          return {
+            code: 200,
+            data
+          }
         }
       },
       error(e) {
@@ -41,16 +53,23 @@ export default {
     }
     return Taro.request(option)
   },
-  get(url) {
+  get({
+    url,
+    query
+  }) {
     let option = {
-      url
+      url,
+      query
     }
     return this.baseOptions(option)
   },
-  post: function (url, data) {
+  post: function ({
+    url,
+    data
+  }) {
     let params = {
       url,
-      data
+      query: data
     }
     return this.baseOptions(params, 'POST')
   }

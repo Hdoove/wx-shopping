@@ -1,9 +1,14 @@
+<<<<<<< HEAD:src/pages/index/index.tsx
 import Taro from '@tarojs/taro';
 import { View, Text, OpenData, Image } from '@tarojs/components';
+=======
+import Taro, { useReachBottom, usePullDownRefresh } from '@tarojs/taro';
+import { View } from '@tarojs/components';
+import Skeleton from '../../components/Skeleton';
+>>>>>>> 755657e4232aae276095e4f29cfd76059f9d0aa6:src/pages/Home/index.tsx
 import { connect } from '@tarojs/redux';
 import { getTest } from '../../actions/test';
 import './index.less';
-// import api from "../../apis/index";
 
 interface IProps {
   test: () => void;
@@ -11,14 +16,19 @@ interface IProps {
 }
 
 const Index = (props: IProps) => {
-  const { test, tests } = props;
+  const { } = props;
 
-  function handleClick() {
-    test();
-  }
+  usePullDownRefresh(() => {
+    console.log('onPullDownRefresh')
+  });
+
+  useReachBottom(() => {
+    console.log('onReachBottom')
+  });
 
   return (
     <View className='index'>
+<<<<<<< HEAD:src/pages/index/index.tsx
       <View><Text onClick={handleClick}>获取数据 </Text></View>
       {
         tests.length > 0 && tests.map(item => {
@@ -32,6 +42,9 @@ const Index = (props: IProps) => {
       }
       <OpenData className='avatar' type='userAvatarUrl'></OpenData>
       <OpenData className='name' type='userNickName' lang='zh_CN'></OpenData>
+=======
+      <Skeleton />
+>>>>>>> 755657e4232aae276095e4f29cfd76059f9d0aa6:src/pages/Home/index.tsx
     </View >
   )
 }

@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux';
 import rootSaga from './sagas';
-import Index from './pages/index'
+import Index from './pages/Home/index'
 import configStore, { sagaMiddleware } from './store'
 import './app.less';
 
@@ -15,34 +15,57 @@ class App extends Component {
 
   config: Taro.Config = {
     pages: [
-      'pages/index/index'
+      'pages/Home/index',
+      'pages/Classify/index',
+      'pages/Cart/index',
+      'pages/My/index'
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'wxapp',
-      navigationBarTextStyle: 'black'
+      navigationBarTitleText: '每日有鲜',
+      navigationBarTextStyle: 'black',
+      // enablePullDownRefresh: true,
+      onReachBottomDistance: 50
     },
     tabBar: {
+      borderStyle: "white",
+      selectedColor: "#E60000",
+      backgroundColor: "#ffffff",
+      color: "#bfbfbf",
       list: [
         {
-          pagePath: "pages/index/index",
-          text: "首页"
+          pagePath: "pages/Home/index",
+          text: "首页",
+          selectedIconPath: "./asset/homeSelect.png",
+          iconPath: "./asset/home.png"
+
         },
         {
-          pagePath: "pages/index/index",
-          text: "分类"
+          pagePath: "pages/Classify/index",
+          text: "分类",
+          selectedIconPath: "./asset/classifySelect.png",
+          iconPath: "./asset/classify.png"
         },
         {
-          pagePath: "pages/index/index",
-          text: "购物车"
+          pagePath: "pages/Cart/index",
+          text: "购物车",
+          selectedIconPath: "./asset/cartSelect.png",
+          iconPath: "./asset/cart.png"
         },
         {
-          pagePath: "pages/index/index",
-          text: "我的"
+          pagePath: "pages/My/index",
+          text: "我的",
+          selectedIconPath: "./asset/mySelect.png",
+          iconPath: "./asset/my.png"
         }
       ]
     },
+    permission: {
+      "scope.userLocation": {
+        "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+      }
+    }
   }
 
   componentDidShow() { }
@@ -51,8 +74,6 @@ class App extends Component {
 
   componentDidCatchError() { }
 
-  // 在 App 类中的 render() 函数没有实际作用
-  // 请勿修改此函数
   render() {
     return (
       <Provider store={store}>

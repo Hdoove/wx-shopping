@@ -7,11 +7,24 @@ import './index.less';
 
 let qqmapsdk;
 
+let timer: any = null;
+
+function debounce(fn: Function, text: string) {
+  return function () {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn(text);
+    }, 500);
+  }
+}
+
 const My = () => {
 
   const [localtion, setLocaltion] = useState({ longitude: 0, latitude: 0 });
   const [markers, setMarkers] = useState<any>([]);
   const [pois, setPois] = useState<any>([]);
+  const [suggest, setSuggest] = useState<any>([]);
+  const [value, setValue] = useState<string>('');
 
   useEffect(() => {
     qqmapsdk = new QQMapWX({
@@ -49,6 +62,10 @@ const My = () => {
 
   function onTap(e) {
     const { latitude, longitude } = e.detail;
+    getPois(latitude, longitude);
+  }
+
+  function getPois(latitude, longitude) {
     setMarkers([{
       iconPath: localtionIcon,
       id: 0,
@@ -57,9 +74,6 @@ const My = () => {
       width: 20,
       height: 30
     }]);
-  }
-
-  function getPois(latitude, longitude) {
     qqmapsdk.reverseGeocoder({
       location: {
         latitude,
@@ -72,55 +86,108 @@ const My = () => {
     });
   }
 
+  // function handleBlurSearch(e) {
+  //   qqmapsdk.getSuggestion({
+  //     keyword: e.target.value,
+  //     success: res => {
+  //       if (res.data.length > 0) {
+  //         const { lng, lat } = res.data[0].location;
+  //         setPois(res.data);
+  //         setLocaltion({ longitude: lng, latitude: lat });
+  //         setMarkers([{
+  //           iconPath: localtionIcon,
+  //           id: 0,
+  //           latitude: lat,
+  //           longitude: lng,
+  //           width: 20,
+  //           height: 30
+  //         }]);
+  //       }
+  //     }
+  //   });
+  // }
+
   function handleChangeSearch(e) {
+    setValue(e.target.value);
+    let fn = debounce(getAddress, e.target.value);
+    fn();
+  }
+
+  function getAddress(value: string) {
     qqmapsdk.getSuggestion({
-      keyword: e.target.value,
+      keyword: value,
       success: res => {
-        if (res.data.length > 0) {
-          const { lng, lat } = res.data[0].location;
-          setPois(res.data);
-          setLocaltion({ longitude: lng, latitude: lat });
-          setMarkers([{
-            iconPath: localtionIcon,
-            id: 0,
-            latitude: lat,
-            longitude: lng,
-            width: 20,
-            height: 30
-          }]);
-        }
+        setSuggest(res.data);
       }
     });
   }
 
+  function handleSearch(item) {
+    setValue(item.title);
+    getPois(item.location.lat, item.location.lng);
+    setSuggest([]);
+    setLocaltion({ longitude: item.location.lng, latitude: item.location.lat });
+  }
+
+  function handleCancel() {
+    setSuggest([]);
+    setValue('');
+  }
+
   return (
-    <View className='index'>
-      <Input type='text' placeholder='请输入地点' onBlur={handleChangeSearch} />
-      <Map
-        onClick={onTap}
-        style={{
-          width: '100vw',
-          height: '30vh'
-        }}
-        longitude={localtion.longitude}
-        latitude={localtion.latitude}
-        subkey='M5YBZ-QGNWF-TSEJU-NCRBO-3O32K-VCBEG'
-        markers={markers}
-      />
-      {/* <OpenData className='avatar' type='userAvatarUrl'></OpenData>
-      <OpenData className='name' type='userNickName' lang='zh_CN'></OpenData> */}
-      {
-        pois.map(item => {
-          return (
-            <View className='poi' key={item.id}>
-              <Image src={circleIcon} className='icon' />
-              <Text className='title'> {item.title} </Text>
-              <Text className='address'> {item.address} </Text>
-              <Text className='distance'> {`${item._distance && item._distance.toFixed(2)} 米`} </Text>
-            </View>
-          )
-        })
-      }
+    <View className='address'>
+      <View className='header'>
+        <Input
+          value={value}
+          style={{ background: '#F6F7F8', width: '70vw', padding: '1vw', display: 'inline-block', borderRadius: '20px', fontSize: '3.5vw', paddingLeft: '4vw' }}
+          placeholderClass='input-placeholder'
+          type='text'
+          placeholder='请输入您的收货地址'
+          onInput={handleChangeSearch}
+        />
+        <Text style={{ display: suggest.length > 0 ? 'inline-block' : 'none', marginLeft: '5vw', color: '#e60000' }} onClick={handleCancel}>取消</Text>
+      </View>
+      <View style={{ display: suggest.length > 0 ? 'none' : 'block' }}>
+        <Map onClick={onTap}
+          style={{
+            width: '100vw',
+            height: '50vh'
+          }}
+          longitude={localtion.longitude}
+          latitude={localtion.latitude}
+          subkey='M5YBZ-QGNWF-TSEJU-NCRBO-3O32K-VCBEG'
+          markers={markers}
+        />
+        {
+          pois.map(item => {
+            return (
+              <View className='poi' key={item.id}>
+                <Image src={circleIcon} className='icon' />
+                <Text className='title'> {item.title} </Text>
+                <Text className='address'> {item.address} </Text>
+                <Text className='distance'> {`${item._distance && item._distance.toFixed(2)} 米`} </Text>
+              </View>
+            )
+          })
+        }
+      </View>
+      <View className='suggests' style={{ display: suggest.length > 0 ? 'block' : 'none' }}>
+        {
+          suggest.length > 0 && suggest.map(item => {
+            const reg = new RegExp(value, 'g');
+            const title = item.title.replace(reg, `<Text>${value}</Text>`);
+            console.log(title);
+            return (
+              <View className='poi' key={item.id} onClick={() => handleSearch(item)}>
+                <Image src={circleIcon} className='icon' />
+                <Text className='title'>{item.title}</Text>
+                <Text className='address'> {item.address} </Text>
+                <Text className='distance'> {item._distance ? item._distance.toFixed(2) + '米' : ''} </Text>
+              </View>
+            )
+          })
+        }
+      </View>
     </View >
   )
 }

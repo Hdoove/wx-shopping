@@ -1,33 +1,63 @@
-.poi {
+.address {
+  position: relative;
+
+  .poi {
     position: relative;
     height: 120px;
     border-bottom: 2px solid #F0F1F2;
+
     .icon {
-        position: absolute;
-        top: 45px;
-        left: 4vw;
-        height: 40px;
-        width: 40px;
+      position: absolute;
+      top: 45px;
+      left: 4vw;
+      height: 40px;
+      width: 40px;
     }
+
     .title {
-        color: #6A6C6C;
-        left: 12vw;
-        position: absolute;
-        top: 3vw;
-        font-size: 4vw;
+      color: #6A6C6C;
+      left: 12vw;
+      position: absolute;
+      top: 3vw;
+      font-size: 4vw;
     }
+
     .address {
-        color: #A3A4A5;
-        position: absolute;
-        left: 12vw;
-        top: 9vw;
-        font-size: 3vw;
+      color: #A3A4A5;
+      position: absolute;
+      left: 12vw;
+      top: 9vw;
+      font-size: 3vw;
     }
+
     .distance {
-        color: #A3A4A5;
-        position: absolute;
-        top: 3vw;
-        right: 6vw;
-        font-size: 3vw;
+      color: #A3A4A5;
+      position: absolute;
+      top: 3vw;
+      right: 6vw;
+      font-size: 3vw;
     }
+  }
+
+  .suggests {
+    position: absolute;
+    top: 8vh;
+    background: #fff;
+    height: 92vh;
+    width: 100%;
+
+    .suggest {
+      display: block;
+    }
+  }
+
+  .header {
+    height: 8vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .input-placeholder {
+    font-size: 3.5vw;
+  }
 }

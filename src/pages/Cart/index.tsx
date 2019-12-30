@@ -8,7 +8,7 @@ const Cart = () => {
   return (
     <View className='index'>
       <View><Text>购物车</Text></View>
-      <Image src={fruits} className="image"/>
+      <Image src={fruits} className='image' />
     </View >
   )
 }

@@ -1,4 +1,4 @@
-import Taro, { Component } from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro';
 import { Provider } from '@tarojs/redux';
 import rootSaga from './sagas';
 import Index from './pages/Home/index'
@@ -23,7 +23,7 @@ class App extends Component {
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: '每日有鲜',
+      navigationBarTitleText: 'wxapp',
       navigationBarTextStyle: 'black',
       // enablePullDownRefresh: true,
       onReachBottomDistance: 50
@@ -63,16 +63,10 @@ class App extends Component {
     },
     permission: {
       "scope.userLocation": {
-        "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+        "desc": "你的位置信息将用于小程序位置接口的效果展示"
       }
     }
   }
-
-  componentDidShow() { }
-
-  componentDidHide() { }
-
-  componentDidCatchError() { }
 
   render() {
     return (

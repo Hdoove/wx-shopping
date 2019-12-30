@@ -1,5 +1,5 @@
-import { View, Text, OpenData, Image } from '@tarojs/components';
 import Taro, { useReachBottom, usePullDownRefresh } from '@tarojs/taro';
+import { View } from '@tarojs/components';
 import Skeleton from '../../components/Skeleton';
 import { connect } from '@tarojs/redux';
 import { getTest } from '../../actions/test';

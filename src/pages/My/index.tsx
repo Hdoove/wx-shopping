@@ -86,27 +86,6 @@ const My = () => {
     });
   }
 
-  // function handleBlurSearch(e) {
-  //   qqmapsdk.getSuggestion({
-  //     keyword: e.target.value,
-  //     success: res => {
-  //       if (res.data.length > 0) {
-  //         const { lng, lat } = res.data[0].location;
-  //         setPois(res.data);
-  //         setLocaltion({ longitude: lng, latitude: lat });
-  //         setMarkers([{
-  //           iconPath: localtionIcon,
-  //           id: 0,
-  //           latitude: lat,
-  //           longitude: lng,
-  //           width: 20,
-  //           height: 30
-  //         }]);
-  //       }
-  //     }
-  //   });
-  // }
-
   function handleChangeSearch(e) {
     setValue(e.target.value);
     let fn = debounce(getAddress, e.target.value);

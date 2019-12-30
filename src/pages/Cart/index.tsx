@@ -1,10 +1,11 @@
-import Taro from '@tarojs/taro';
+import Taro, { useEffect } from '@tarojs/taro';
 import { View, Text, Image } from '@tarojs/components';
 import fruits from '../../asset/fruits.jpg';
 import './index.less';
 
 const Cart = () => {
 
+  useEffect(() => {}, []);
   return (
     <View className='index'>
       <View><Text>购物车</Text></View>

@@ -1,6 +1,6 @@
 .classify {
   .leftContent {
-    width: 26vw;
+    width: 24vw;
     background: #F9FAFB;
     height: 100vh;
     overflow: auto;
@@ -36,22 +36,33 @@
 
   .rightContent {
     display: inline-block;
-    width: 73vw;
+    width: 76vw;
     height: 100vh;
     vertical-align: top;
+    overflow: auto;
 
-    .chevron {
-      position: absolute;
-      top: 1.4vh;
-      right: 0px;
-      height: 5vw;
-      width: 5vw;
-    }
-
-    .type {
-      overflow-x: auto;
-      display: flex;
-
+    .rightHover{
+      width: 76vw;
+      height: 100vh;
+      background: rgba(0,0,0,.4);
+      float: left;
+      position: relative;
+      z-index: 10;
+      .allClassify{
+        display: block;
+        font-size: 3vw;
+        color: #999;
+        margin-left: 1vw;
+        margin-bottom: 1vw;
+      }
+      .chevron {
+        position: absolute;
+        top: 1vh;
+        right: 1vh;
+        height: 5vw;
+        width: 5vw;
+        transform: rotate(180deg);
+      }
       .typeText {
         color: #3E3F40;
         border: 1px solid #E4E5E6;
@@ -60,13 +71,127 @@
         display: inline-block;
         margin: 1vw;
         font-size: 3vw;
-        min-width: 15vw;
-        text-align: center;
       }
 
       .choose {
         color: #e60000;
         border-color: #e60000;
+      }
+    }
+
+    .type {
+      overflow: hidden;
+      position: relative;
+      margin-top: 20vh;
+      height: 5vh;
+
+      .shadow{
+        background: linear-gradient(to right, rgba(255,255,255,.1), rgba(255,255,255,1));
+        position: absolute;
+        width: 25vw;
+        top: 0;
+        right: 0;
+        height: 5vh;
+      }
+
+      .chevron {
+        position: absolute;
+        top: 1.4vh;
+        right: 0px;
+        height: 5vw;
+        width: 5vw;
+      }
+
+      .typeText {
+        color: #3E3F40;
+        border: 1px solid #E4E5E6;
+        padding: 1.5vw 1.5vh;
+        border-radius: 1vw;
+        display: inline-block;
+        margin: 1vw;
+        font-size: 3vw;
+      }
+
+      .choose {
+        color: #e60000;
+        border-color: #e60000;
+      }
+    }
+
+    .food {
+      width: 96%;
+      height: 16vh;
+      margin: 0 auto;
+      position: relative;
+      .image {
+        width: 14vh;
+        height: 14vh;
+        position: absolute;
+        top: 1vh;
+        left: 0;
+      }
+      .name {
+        position: absolute;
+        top: 1vh;
+        left: 15vh;
+        font-size: 4.5vw;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        width: 45vw;
+      }
+      .describe {
+        position: absolute;
+        top: 5vh;
+        left: 15vh;
+        font-size: 3.5vw;
+        color: #999;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        width: 40vw;
+      }
+      .price {
+        position: absolute;
+        bottom: 1vh;
+        left: 14.5vh;
+        color: #e60000;
+        .big {
+          font-size: 5vw;
+          margin-right: 2vw;
+        }
+        .small {
+          font-size: 4.5vw;
+          color: #999;
+          text-decoration: line-through;          
+        }
+      }
+      .operation{
+        position: absolute;
+        bottom: 1.5vh;
+        right: 0.5vh;
+        display: flex;
+        width: 23vw;
+        justify-content: space-around;
+        align-items: center;
+        .add{
+          color: #fff;
+          background: #e60000;
+          border-radius: 50%;
+          width: 5vw;
+          height: 5vw;
+          text-align: center;
+          line-height: 4vw;
+        }
+        .subtraction{
+          color: #fff;
+          background: #e60000;
+          border-radius: 50%;
+          width: 5vw;
+          height: 5vw;
+          text-align: center;
+          line-height: 4vw;
+        }
       }
     }
   }

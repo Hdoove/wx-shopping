@@ -75,8 +75,8 @@ const My = () => {
   function handleChangeSearch(e) {
     qqmapsdk.getSuggestion({
       keyword: e.target.value,
-      success: res => { 
-        if(res.data.length > 0) {
+      success: res => {
+        if (res.data.length > 0) {
           const { lng, lat } = res.data[0].location;
           setPois(res.data);
           setLocaltion({ longitude: lng, latitude: lat });
@@ -91,7 +91,7 @@ const My = () => {
         }
       }
     });
-  } 
+  }
 
   return (
     <View className='index'>
@@ -104,20 +104,19 @@ const My = () => {
         }}
         longitude={localtion.longitude}
         latitude={localtion.latitude}
-        subkey="M5YBZ-QGNWF-TSEJU-NCRBO-3O32K-VCBEG"
+        subkey='M5YBZ-QGNWF-TSEJU-NCRBO-3O32K-VCBEG'
         markers={markers}
-        // polyline={polyline}
       />
       {/* <OpenData className='avatar' type='userAvatarUrl'></OpenData>
       <OpenData className='name' type='userNickName' lang='zh_CN'></OpenData> */}
       {
         pois.map(item => {
           return (
-            <View className="poi" key={item.id}>
-              <Image src={circleIcon} className="icon"/>
-              <Text className="title"> {item.title} </Text>
-              <Text className="address"> {item.address} </Text>
-              <Text className="distance"> {`${ item._distance && item._distance.toFixed(2)} 米`} </Text>
+            <View className='poi' key={item.id}>
+              <Image src={circleIcon} className='icon' />
+              <Text className='title'> {item.title} </Text>
+              <Text className='address'> {item.address} </Text>
+              <Text className='distance'> {`${item._distance && item._distance.toFixed(2)} 米`} </Text>
             </View>
           )
         })

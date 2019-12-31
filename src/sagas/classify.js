@@ -16,7 +16,6 @@ function* fetchClassify(action) {
       data
     } = yield call(get_data, action.payload);
     if (data.data) {
-      console.log(actions);
       yield put(actions.setClassify(data.data.allClassifies));
       yield put(actions.setLoading(false));
     }

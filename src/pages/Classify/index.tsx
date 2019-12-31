@@ -1,25 +1,21 @@
 import Taro, { useEffect, useState } from '@tarojs/taro';
 import { View, Text, Image } from '@tarojs/components';
-import { connect } from '@tarojs/redux';
+import { useDispatch, useSelector } from '@tarojs/redux';
 import { getClassify } from '../../actions/classify';
 import chevron from '../../asset/chevron.png';
 import fruits from '../../asset/fruits.jpg';
 import Skeleton from './Skeleton';
+// import { createSelector } from 'reselect'
 import './index.less';
 
-interface IProps {
-  classify: {
-    id: number;
-    name: string;
-    classifys: { name: string, id: number }[];
-  }[];
-  loading: boolean;
-  getClassifys: (str: string) => void;
-}
+const Classify = () => {
 
-const Classify = (props: IProps) => {
+  const dispatch = useDispatch();
+  // const selectNumOfDoneTodos = createSelector(data => data);
+  // console.log(selectNumOfDoneTodos);
 
-  const { getClassifys, classify, loading } = props;
+  const state: any = useSelector(data => data);
+  const { classify, loading } = state.classify;
 
   const [choose, setChoose] = useState<number>(0);
   const [type, setType] = useState<number>(0);
@@ -40,7 +36,7 @@ const Classify = (props: IProps) => {
         }
       }
     }`;
-    getClassifys(get_classify);
+    dispatch(getClassify(get_classify))
   }, []);
 
   function handleClick(index: number) {
@@ -58,8 +54,6 @@ const Classify = (props: IProps) => {
     setIsOpenType(!isOpenType);
   }
 
-  console.log(classify.length);
-
   return (
     <View className='classify'>
       {
@@ -74,7 +68,6 @@ const Classify = (props: IProps) => {
             }
           </View>
           <View className='rightContent'>
-            {/* <Skeleton /> */}
             <View className="rightHover" style={{ display: isOpenType ? 'block' : 'none' }}>
               <View style={{ background: '#fff', paddingTop: '2vw' }}>
                 <Text className="allClassify">全部分类</Text>
@@ -88,16 +81,17 @@ const Classify = (props: IProps) => {
                 }
               </View>
             </View>
+            <View className="imageShow"></View>
             <View className='type'>
               <View className='shadow'></View>
               <Image onClick={handleOpenType} src={chevron} className='chevron'></Image>
-                {
-                  classify.length > 0 && classify[choose].classifys.map((item, index) => {
-                    return (
-                      <Text className={`typeText ${index === type ? 'choose' : ''}`} key={item.id} onClick={() => handleSmallClick(index)}>{item.name}</Text>
-                    )
-                  })
-                }
+              {
+                classify.length > 0 && classify[choose].classifys.map((item, index) => {
+                  return (
+                    <Text className={`typeText ${index === type ? 'choose' : ''}`} key={item.id} onClick={() => handleSmallClick(index)}>{item.name}</Text>
+                  )
+                })
+              }
             </View>
             <View className="food">
               <Image src={fruits} className="image"></Image>
@@ -121,21 +115,5 @@ const Classify = (props: IProps) => {
   )
 }
 
-const mapStateToProps = (state: any) => {
-  const { classify } = state;
-
-  return {
-    classify: classify.classify,
-    loading: classify.loading
-  };
-};
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    getClassifys: (str: string) => {
-      dispatch(getClassify(str));
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Classify);
+export default Classify;
 

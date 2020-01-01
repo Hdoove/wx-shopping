@@ -113,6 +113,8 @@ const My = () => {
     setValue('');
   }
 
+  console.log(pois);
+
   return (
     <View className='address'>
       <View className='header'>

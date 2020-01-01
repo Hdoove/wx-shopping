@@ -3,8 +3,13 @@ import Immutable from 'seamless-immutable';
 import actions from '../actions/classify';
 
 const defaultState = Immutable({
-    classify: [],
-    loading: false
+    classify: [
+        {
+            classifys: []
+        }
+    ],
+    foods: [],
+    loading: true
 });
 
 const reducer = handleActions(
@@ -12,6 +17,10 @@ const reducer = handleActions(
         [
             actions.setClassify,
             (state, { payload }) => state.set('classify', payload)
+        ],
+        [
+            actions.setFoods,
+            (state, { payload }) => state.set('foods', payload)
         ],
         [
             actions.setLoading,

@@ -1,202 +1,242 @@
 .classify {
   .leftContent {
-    width: 24vw;
+    width     : 24vw;
     background: #F9FAFB;
-    height: 100vh;
-    overflow: auto;
-    display: inline-block;
+    height    : 100vh;
+    overflow  : auto;
+    display   : inline-block;
 
     .classifyText {
-      display: block;
-      height: 10vh;
+      display    : block;
+      height     : 10vh;
       line-height: 10vh;
-      color: #808181;
-      text-align: center;
-      font-size: 3.5vw;
+      color      : #808181;
+      text-align : center;
+      font-size  : 3.5vw;
     }
 
     .choose {
-      color: #434244;
-      font-size: 4vw;
+      color      : #434244;
+      font-size  : 4vw;
       font-weight: bold;
-      position: relative;
+      position   : relative;
 
       &::before {
-        content: '';
-        display: inline-block;
-        width: 1.5vw;
-        height: 4vh;
+        content   : '';
+        display   : inline-block;
+        width     : 1.5vw;
+        height    : 4vh;
         background: #e60000;
-        position: absolute;
-        top: 3vh;
-        left: 0;
+        position  : absolute;
+        top       : 3vh;
+        left      : 0;
       }
     }
   }
 
   .rightContent {
-    display: inline-block;
-    width: 76vw;
-    height: 100vh;
+    display       : inline-block;
+    width         : 76vw;
+    height        : 100vh;
     vertical-align: top;
-    overflow: auto;
+    overflow      : auto;
 
-    .imageShow{
-      
+    .imageShow {
+      background   : #F0F1F2;
+      height       : 20vh;
+      border-radius: 4vw;
+      width        : 94%;
+      margin       : 2vh auto;
     }
 
-    .rightHover{
-      width: 76vw;
-      height: 100vh;
-      background: rgba(0,0,0,.4);
-      float: left;
-      position: relative;
-      z-index: 10;
-      .allClassify{
-        display: block;
-        font-size: 3vw;
-        color: #999;
-        margin-left: 1vw;
+    .rightHover {
+      width     : 76vw;
+      height    : 100vh;
+      background: rgba(0, 0, 0, .4);
+      float     : left;
+      position  : fixed;
+      z-index   : 10;
+      top       : 0;
+
+      .allClassify {
+        display      : block;
+        font-size    : 3vw;
+        color        : #999;
+        margin-left  : 1vw;
         margin-bottom: 1vw;
       }
+
       .chevron {
-        position: absolute;
-        top: 1vh;
-        right: 1vh;
-        height: 5vw;
-        width: 5vw;
+        position : absolute;
+        top      : 1vh;
+        right    : 1vh;
+        height   : 5vw;
+        width    : 5vw;
         transform: rotate(180deg);
-      }
-      .typeText {
-        color: #3E3F40;
-        border: 1px solid #E4E5E6;
-        padding: 1.5vw 2vh;
-        border-radius: 1vw;
-        display: inline-block;
-        margin: 1vw;
-        font-size: 3vw;
       }
 
       .choose {
-        color: #e60000;
+        color       : #e60000;
+        border-color: #e60000;
+      }
+    }
+
+    .shadow {
+      background: linear-gradient(to right, rgba(255, 255, 255, .1), rgba(255, 255, 255, 1));
+      position  : absolute;
+      width     : 25vw;
+      top       : 0;
+      right     : 0;
+      height    : 6vh;
+    }
+
+    .typeText {
+      color        : #3E3F40;
+      border       : 1px solid #E4E5E6;
+      padding      : 1.5vw 1.7vh;
+      border-radius: 1vw;
+      display      : inline-block;
+      margin       : 1vw;
+      font-size    : 3vw;
+    }
+
+    .fixed {
+      position  : fixed;
+      background: #fff;
+      z-index   : 10;
+      top       : 0;
+      margin-top: 0px;
+      height    : 5.6vh;
+      overflow  : hidden;
+      min-height: 2rem;
+
+      .chevron {
+        position: absolute;
+        top     : 1.4vh;
+        right   : 0vh;
+        height  : 5vw;
+        width   : 5vw;
+      }
+
+      .choose {
+        color       : #e60000;
         border-color: #e60000;
       }
     }
 
     .type {
-      overflow: hidden;
-      position: relative;
-      margin-top: 20vh;
-      height: 5vh;
-
-      .shadow{
-        background: linear-gradient(to right, rgba(255,255,255,.1), rgba(255,255,255,1));
-        position: absolute;
-        width: 25vw;
-        top: 0;
-        right: 0;
-        height: 5vh;
-      }
+      overflow  : hidden;
+      position  : relative;
+      height    : 5.6vh;
+      min-height: 2rem;
 
       .chevron {
         position: absolute;
-        top: 1.4vh;
-        right: 0px;
-        height: 5vw;
-        width: 5vw;
-      }
-
-      .typeText {
-        color: #3E3F40;
-        border: 1px solid #E4E5E6;
-        padding: 1.5vw 1.5vh;
-        border-radius: 1vw;
-        display: inline-block;
-        margin: 1vw;
-        font-size: 3vw;
+        top     : 1.4vh;
+        right   : 0px;
+        height  : 5vw;
+        width   : 5vw;
       }
 
       .choose {
-        color: #e60000;
+        color       : #e60000;
         border-color: #e60000;
       }
     }
 
     .food {
-      width: 96%;
-      height: 16vh;
-      margin: 0 auto;
-      position: relative;
+      width        : 96%;
+      height       : 16vh;
+      margin       : 0 auto;
+      position     : relative;
+      border-bottom: 1px solid #f1f1f1;
+      margin-top   : 1vh;
+
       .image {
-        width: 14vh;
-        height: 14vh;
-        position: absolute;
-        top: 1vh;
-        left: 0;
+        width        : 14vh;
+        height       : 14vh;
+        position     : absolute;
+        top          : 1vh;
+        left         : 0;
+        border-radius: 50%;
       }
+
       .name {
-        position: absolute;
-        top: 1vh;
-        left: 15vh;
-        font-size: 4.5vw;
-        overflow: hidden;
-        text-overflow:ellipsis;
-        white-space: nowrap;
-        width: 45vw;
+        position     : absolute;
+        top          : 1vh;
+        left         : 15vh;
+        font-size    : 1rem;
+        overflow     : hidden;
+        text-overflow: ellipsis;
+        white-space  : nowrap;
+        width        : 45vw;
       }
+
       .describe {
-        position: absolute;
-        top: 5vh;
-        left: 15vh;
-        font-size: 3.5vw;
-        color: #999;
-        overflow: hidden;
-        text-overflow:ellipsis;
-        white-space: nowrap;
-        width: 40vw;
+        position     : absolute;
+        top          : 5vh;
+        left         : 15vh;
+        font-size    : .8rem;
+        color        : #999;
+        overflow     : hidden;
+        text-overflow: ellipsis;
+        white-space  : nowrap;
+        width        : 40vw;
       }
+
       .price {
         position: absolute;
-        bottom: 1vh;
-        left: 14.5vh;
-        color: #e60000;
+        bottom  : 1vh;
+        left    : 14.5vh;
+        color   : #e60000;
+
         .big {
-          font-size: 5vw;
+          font-size   : 1.4rem;
           margin-right: 2vw;
         }
+
         .small {
-          font-size: 4.5vw;
-          color: #999;
-          text-decoration: line-through;          
+          font-size      : 1rem;
+          color          : #999;
+          text-decoration: line-through;
         }
       }
-      .operation{
-        position: absolute;
-        bottom: 1.5vh;
-        right: 0.5vh;
-        display: flex;
-        width: 23vw;
+
+      .operation {
+        position       : absolute;
+        bottom         : 1.5vh;
+        right          : 0.5vh;
+        display        : flex;
+        width          : 23vw;
         justify-content: space-around;
-        align-items: center;
-        .add{
-          color: #fff;
-          background: #e60000;
+        align-items    : center;
+
+        .add {
+          color        : #fff;
+          background   : #e60000;
           border-radius: 50%;
-          width: 5vw;
-          height: 5vw;
-          text-align: center;
-          line-height: 4vw;
+          width        : 5vw;
+          height       : 5vw;
+          text-align   : center;
+          line-height  : 4vw;
         }
-        .subtraction{
-          color: #fff;
-          background: #e60000;
+
+        .subtraction {
+          color        : #fff;
+          background   : #e60000;
           border-radius: 50%;
-          width: 5vw;
-          height: 5vw;
-          text-align: center;
-          line-height: 4vw;
+          width        : 5vw;
+          height       : 5vw;
+          text-align   : center;
+          line-height  : 4vw;
         }
       }
     }
+  }
+
+  .noneData {
+    text-align: center;
+    margin-top: 30vh;
+    color: #e60000;
   }
 }

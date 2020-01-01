@@ -2,7 +2,7 @@ import Taro, { Component } from '@tarojs/taro';
 import { Provider } from '@tarojs/redux';
 import rootSaga from './sagas';
 import Index from './pages/Home/index'
-import configStore, { sagaMiddleware } from './store'
+import configStore, { sagaMiddleware } from './store';
 import './app.less';
 
 
@@ -15,8 +15,9 @@ class App extends Component {
 
   config: Taro.Config = {
     pages: [
-      'pages/Home/index',
       'pages/Classify/index',
+      'pages/FoodDetail/index',
+      'pages/Home/index',
       'pages/Cart/index',
       'pages/My/index'
     ],

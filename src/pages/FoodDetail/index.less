@@ -1,0 +1,137 @@
+.foodDetail{
+    background: #F3F7F8;
+    .head{
+        height: 32vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background: #fff;
+        position: relative;
+        .image {
+            height: 100%;;
+        }
+        .order{
+            position: absolute;
+            bottom: 2vw;
+            right: 2vw;
+            background: #A1A7A6;
+            border-radius: 1rem;
+            color: #fff;
+            padding: 1.4vw 4vw;
+            font-size: .8rem;
+        }
+    }
+    .foodInfo{
+        padding: 2vh 4vw;
+        background: #fff;
+        .displayB {
+            display: block;
+        }
+        .name{
+            color: #1C1C1F;
+            font-size: 1.2rem;
+            margin-bottom: 1vw;
+            font-weight: bold;
+        }
+        .dec{
+            color: #878789;
+            font-size: .8rem;
+        }
+        .price {
+            color   : #e60000;
+            display: flex;
+            align-items: center;
+            margin-top: 1.2vh;
+            position: relative;
+    
+            .big {
+              font-size   : 1.6rem;
+              margin-right: 1vw;
+            }
+    
+            .small {
+              font-size: .6rem;
+              color: #999;
+              margin-top: 2vw;
+            }
+            .sold{
+                position: absolute;
+                bottom: 0vh;
+                font-size: .8rem;
+                color: #6F7172;
+                right: 1vh;
+            }
+        }
+        
+    }
+
+    .delivery{
+        margin-top: 1.6vh;
+        padding: 2vh 4vw;
+        background: #fff;
+        font-size: .9rem;
+    }
+    .detail{
+        margin-top: 1.6vh;
+        padding: 2vh 4vw;
+        background: #fff;
+        padding-bottom: 17vh;
+        .title {
+            color: #1C1C1F;
+            font-size: 1rem;
+            margin-bottom: 1vw;
+            font-weight: bold;
+        }
+        .keyValue{
+            border: 1px solid #F6F8F8;
+            padding: 2vh;
+            border-top: none;
+            &:first-child {
+                border-top: 1px solid #F6F8F8;
+            }
+            .value{
+                color: #1C1C1F;
+                font-size: .8rem;
+            }
+            .key{
+                color: #878789;
+                font-size: .8rem;
+                display: inline-block;
+                min-width: 20vw;
+            }
+        }
+        .dec{
+            display: inline-block;
+            text-align: center;
+            color: #5E6062;
+            font-size: .8rem;
+            margin-top: 3vh;
+            width: 100%;
+        }
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: #fff;
+        padding: 2vh 1.5vh 4vh;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 -4px 20px #f1f1f1;        
+        .img {
+            width: 2rem;
+            height: 2rem;
+        }
+        .add {
+            color: #fff;
+            background: #e60000;
+            display: inline-block;
+            width: 70%;
+            text-align: center;
+            padding: 1vh;
+            margin-left: 10%;    
+            border-radius: .4rem;
+        }
+    }
+}

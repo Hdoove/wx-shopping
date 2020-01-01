@@ -1,4 +1,90 @@
 .index {
   flex-direction: column;
-  width: 100%;
+  padding       : 0 1%;
+  background    : #F2F3F4;
+
+  .foods {
+    display        : flex;
+    justify-content: space-around;
+    flex-wrap      : wrap;
+
+    .food {
+      width        : 44%;
+      margin       : 1vh 0;
+      display      : inline-block;
+      background   : #fff;
+      height       : 35vh;
+      text-align   : center;
+      padding      : 2vw;
+      border-radius: .4rem;
+      position     : relative;
+
+      .img {
+        height: 52%;
+        width : 70%;
+      }
+
+      .info {
+        text-align: left;
+        margin-top: 3%;
+
+        .name {
+          font-size: 1rem;
+          width    : 45vw;
+          display  : block;
+        }
+
+        .describe {
+          font-size    : .8rem;
+          color        : #A7A8AA;
+          overflow     : hidden;
+          text-overflow: ellipsis;
+          white-space  : nowrap;
+          width        : 40vw;
+        }
+      }
+
+      .price {
+        color      : #e60000;
+        display    : flex;
+        align-items: center;
+        margin-top : 1.2vh;
+        position   : absolute;
+        bottom     : 1vh;
+
+        .big {
+          font-size   : 1.2rem;
+          margin-right: 1vw;
+        }
+
+        .small {
+          font-size      : .6rem;
+          color          : #999;
+          margin-top     : 1vw;
+          text-decoration: line-through;
+        }
+
+        .sold {
+          position : absolute;
+          bottom   : 0vh;
+          font-size: .8rem;
+          color    : #6F7172;
+          right    : 1vh;
+        }
+      }
+
+      .add {
+        position     : absolute;
+        bottom       : 1vh;
+        right        : 1vh;
+        color        : #fff;
+        background   : #e60000;
+        border-radius: 50%;
+        width        : 5vw;
+        height       : 5vw;
+        text-align   : center;
+        line-height  : 4vw;
+      }
+    }
+  }
 }
